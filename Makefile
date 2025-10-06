@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++20 -stdlib=libc++ -g -Iinclude
 TARGET := main
 
 # 현재 폴더 안의 모든 cpp 파일 자동 검색
-SRC := $(wildcard *.cpp)
+SRC := $(wildcard ./src/*.cpp)
 
 # cpp → obj 변환
 OBJ := $(SRC:.cpp=.o)
