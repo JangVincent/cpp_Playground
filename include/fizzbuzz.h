@@ -1,6 +1,0 @@
-#ifndef FIZZBUZZ_H
-#define FIZZBUZZ_H
-
-void fizzbuzz(int rangeStart, int rangeEnd);
-
-#endif

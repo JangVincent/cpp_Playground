@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "fizzbuzz.h"
+#include "fizzbuzz/fizzbuzz.h"
 
 using namespace std;
 
-int main() { fizzbuzz(1, 100); }
+int main() { fizzbuzz::fizzbuzz(1, 100); }

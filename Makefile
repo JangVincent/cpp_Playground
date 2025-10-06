@@ -1,19 +1,21 @@
 CXX := clang++
 CXXFLAGS := -std=c++20 -stdlib=libc++ -g -Iinclude
 TARGET := main
+BUILD_DIR := build
 
-# 현재 폴더 안의 모든 cpp 파일 자동 검색
-SRC := $(wildcard ./src/*.cpp)
+# 모든 하위 디렉토리의 cpp 파일 검색
+SRC := $(shell find src -name "*.cpp")
 
-# cpp → obj 변환
-OBJ := $(SRC:.cpp=.o)
+# cpp → obj 변환 (build/ 디렉토리에 생성)
+OBJ := $(SRC:src/%.cpp=$(BUILD_DIR)/%.o)
 
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET)
 
-# 개별 cpp → obj 규칙
-%.o: %.cpp
+# build 디렉토리 생성 및 개별 cpp → obj 규칙
+$(BUILD_DIR)/%.o: src/%.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(BUILD_DIR) $(TARGET)
