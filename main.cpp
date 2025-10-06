@@ -1,18 +1,24 @@
 #include <iostream>
 using namespace std;
 
-int Health{150};
+void fizzbuzz(int rangeStart, int rangeEnd);
 
-void TakeDamage() {
-  cout << " - TakeDamage function starting\n";
-  Health -= 50;
-  cout << " - TakeDamage function complete\n";
-}
+int main() { fizzbuzz(1, 100); }
 
-int main() {
-  cout << "Main function starting\n";
-  TakeDamage();
-  cout << "We are back in main\n";
-  TakeDamage();
-  cout << "Main function complete\n";
+void fizzbuzz(int rangeStart, int rangeEnd) {
+  int i{rangeStart};
+
+  for (; i <= rangeEnd; i++) {
+    if (i % 3 == 0 && i % 5 == 0) {
+      cout << "FizzBuzz" << endl;
+      continue;
+    } else if (i % 3 == 0) {
+      cout << "Fizz" << endl;
+      continue;
+    } else if (i % 5 == 0) {
+      cout << "Buzz" << endl;
+      continue;
+    }
+    cout << i << endl;
+  }
 }
